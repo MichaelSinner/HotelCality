@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.uan.hotelcality.Connection;
+package com.uan.restaurante.Connection;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -11,10 +11,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author Michael Sinner
- */
+
 public class DBConnection 
 {
     private static Connection conn = null;
@@ -28,7 +25,7 @@ public class DBConnection
             
             try {
                 Class.forName("com.mysql.jdbc.Driver");
-                String url = "jdbc:mysql://localhost:3306/db_hotel_cality";
+                String url = "jdbc:mysql://localhost:3306/db_restaurante";
                 String user = "root";
                 String password = "root";
                 

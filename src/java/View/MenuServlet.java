@@ -35,12 +35,14 @@ public class MenuServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Hotel Cality - Menú Principal</title>");            
+            out.println("<title>Restaurante El Colombiano- Menú Principal</title>");            
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Menú Pricipal</h1>");
-            out.println("<a href='RegistrarG.jsp'>Registrar Huesped</a>  <br/>");
-            out.println("<a href='Lista.jsp'>Mostrar Huespedes</a>  <br/>");
+            out.println("<a href='ListaPlatos.jsp'>Mostrar Menú de Platos</a>  <br/>");
+            out.println("<a href='RegistrarPlatos.jsp'>Ingresar plato al Menú</a>  <br/>");
+            out.println("<a href='RegistrarG.jsp'>Mostrar productividad</a>  <br/>");
+        
             out.println("<a href='logout.do'>Cerrar Sesión</a>  <br/>");
             out.println("</body>");
             out.println("</html>");

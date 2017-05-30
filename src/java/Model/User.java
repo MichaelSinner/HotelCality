@@ -1,21 +1,17 @@
 
 package Model;
 
-/**
- *
- * @author Michael Sinner
- */
 public class User 
 {
     private int id;
-    private String mail;
+    private String user;
     private String password;
     private String name;
-    private int typeUser;
+    
 
     public User(){}
-    public User(String mail, String password) {
-        this.mail = mail;
+    public User(String user, String password) {
+        this.user = user;
         this.password = password;
     }
 
@@ -35,20 +31,12 @@ public class User
         this.name = name;
     }
 
-    public int getTypeUser() {
-        return typeUser;
+    public String getUser() {
+        return user;
     }
 
-    public void setTypeUser(int typeUser) {
-        this.typeUser = typeUser;
-    }
-
-    public String getMail() {
-        return mail;
-    }
-
-    public void setMail(String mail) {
-        this.mail = mail;
+    public void setUser(String user) {
+        this.user = user;
     }
 
     public String getPassword() {

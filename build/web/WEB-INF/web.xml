@@ -5,16 +5,16 @@
         <servlet-class>View.ErrorValidate</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>ListGuestServlet</servlet-name>
-        <servlet-class>Controller.ListGuestServlet</servlet-class>
+        <servlet-name>PlatosServlet</servlet-name>
+        <servlet-class>Controller.PlatosServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ErrorValidate</servlet-name>
         <url-pattern>/ErrorValidate</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>ListGuestServlet</servlet-name>
-        <url-pattern>/ListGuestServlet</url-pattern>
+        <servlet-name>PlatosServlet</servlet-name>
+        <url-pattern>/PlatosServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

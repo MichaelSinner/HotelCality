@@ -4,9 +4,6 @@ import Model.User;
 import Model.UserDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
-import static java.lang.System.out;
-import java.util.Iterator;
-import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -66,9 +63,9 @@ public class ValidateServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html");  
         PrintWriter out = response.getWriter();  
-        String email = request.getParameter("txtEmail");
+        String user = request.getParameter("txtUser");
         String password = request.getParameter("txtPassword");
-        User user1 = new User(email, password);
+        User user1 = new User(user, password);
         UserDAO dao = new UserDAO();
        
         
@@ -79,7 +76,7 @@ public class ValidateServlet extends HttpServlet {
             request.getRequestDispatcher("menu.view").forward(request, response);
         }else{
             
-            out.print("<p style=\"color:red\">Sorry username or password error</p>");  
+            out.print("<p style=\"color:red\">Sorry username or password incorrect</p>");  
             RequestDispatcher rd=request.getRequestDispatcher("index.html");  
             rd.include(request,response);  
         }

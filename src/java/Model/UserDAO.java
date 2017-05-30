@@ -1,11 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Model;
-import Model.User;
-import com.uan.hotelcality.Connection.DBConnection;
+import com.uan.restaurante.Connection.DBConnection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -31,13 +26,13 @@ public class UserDAO
     public void addUser(User user)
     {
         try {
-            String sql = "INSERT INTO usuarios(idusuarios,email,pasword,nombre,tipoUsuario) "+"VALUES(?,?,?,?,?)";
+            String sql = "INSERT INTO usuarios(idusuarios,name,pasword,nombre) "+"VALUES(?,?,?,?)";
             PreparedStatement pstm = conn.prepareStatement(sql);
             pstm.setInt(1, user.getId());
-            pstm.setString(2, user.getMail());
+            pstm.setString(2, user.getUser());
             pstm.setString(3, user.getPassword());
             pstm.setString(4, user.getName());
-            pstm.setInt(5, user.getTypeUser());
+            
             pstm.executeUpdate();
         } catch (SQLException ex) {
             System.out.println("Error al insertar a "+user.getName()+" : "+ex);
@@ -62,13 +57,12 @@ public class UserDAO
     public void editUser(User user)
     {
         try {
-            String sql = "UPDATE usuarios set email =?, pasword=?, nombre=?, tipoUsuario=? where idusuarios=?";
+            String sql = "UPDATE usuarios set name =?, pasword=?, nombre=? where idusuarios=?";
             PreparedStatement pstm = conn.prepareStatement(sql);
-            pstm.setString(1, user.getMail());
+            pstm.setString(1, user.getUser());
             pstm.setString(2, user.getPassword());
             pstm.setString(3, user.getName());
-            pstm.setInt(4, user.getTypeUser());
-            pstm.setInt(5, user.getId());
+            pstm.setInt(4, user.getId());
             pstm.executeUpdate();
             
         } catch (SQLException ex) {
@@ -79,8 +73,7 @@ public class UserDAO
     
     public List getAllUsers(){
         List listUsers = new ArrayList();
-        
-        
+               
         try {
             String sql = "SELECT * FROM usuarios";    
             PreparedStatement pstm = conn.prepareStatement(sql);
@@ -89,10 +82,9 @@ public class UserDAO
             {
                 User user = new User();
                 user.setId(rs.getInt("idusuarios"));
-                user.setMail(rs.getString("email"));
+                user.setUser(rs.getString("email"));
                 user.setPassword(rs.getString("pasword"));
                 user.setName(rs.getString("nombre"));
-                user.setTypeUser(rs.getInt("tipoUsurio"));
                 listUsers.add(user);
             }
             
@@ -113,10 +105,10 @@ public class UserDAO
             ResultSet rs = pstm.executeQuery();
             if(rs.next()){
                 user.setId(rs.getInt("idusuarios"));
-                user.setMail(rs.getString("email"));
+                user.setUser(rs.getString("name"));
                 user.setPassword(rs.getString("pasword"));
                 user.setName(rs.getString("nombre"));
-                user.setTypeUser(rs.getInt("tipoUsurio"));
+                
             }
         } catch (SQLException ex) {
             Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -129,12 +121,10 @@ public class UserDAO
     {
         
         boolean isValidated = false;
-        String emailModel = null;
-        String passwordModel = null;
-        
+            
         
         try {
-            String sql = "select * from usuarios where email='"+user.getMail()+"' and pasword='"+user.getPassword()+"'";
+            String sql = "select * from usuarios where name='"+user.getUser()+"' and password='"+user.getPassword()+"'";
             PreparedStatement pstm = conn.prepareStatement(sql);
             ResultSet rs = pstm.executeQuery();
             isValidated = rs.next();
@@ -142,7 +132,7 @@ public class UserDAO
             
         } catch (SQLException ex) {
             Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("Error validadndo :"+ex);
+            System.out.println("Error validando :"+ex);
         }
          
         return isValidated;
